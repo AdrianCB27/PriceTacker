@@ -1,5 +1,6 @@
 let dataJson = {};
 let cargando = false;
+let datosLocalStorage=getItems()
 
 
 $("#boton").on("click", async function () {
@@ -20,6 +21,8 @@ $("#boton").on("click", async function () {
     })
     .then((data) => {
       console.log("Datos recibidos:", data);
+      datosLocalStorage.unshift(data);
+      setItems(datosLocalStorage);
       pintarTitulo(data.nombre);
       pintarFoto(data.src);
       pintarDescripcion(data.desc);
@@ -45,4 +48,12 @@ function pintarPrecioYStock(precio,stock) {
   $('#precio').text(precio);
   $('#stock').text(stock);
   $('#divPrecioStock').toggleClass('hidden');
+}
+ function getItems() {
+  const productos = localStorage.getItem('productos');
+  return productos ? JSON.parse(productos) : []; 
+}
+ function setItems(arrayProductosActualizado) {
+  localStorage.setItem('productos',JSON.stringify(arrayProductosActualizado));
+  
 }

@@ -24,10 +24,10 @@
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="/index.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Inico</a>
-                            <a href="/pages/dashboard.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Dashboard</a>
+                            <a href="/index.html" class="rounded-md px-3 py-2 text-sm font-medium text-yellow-400 hover:bg-gray-700 hover:text-white">Inico</a>
+                            <a href="/pages/dashboard.html" class="rounded-md px-3 py-2 text-sm font-medium text-yellow-400 hover:bg-gray-700 hover:text-white">Dashboard</a>
                             <a href="/pages/search.html"  class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" >Buscar Producto</a>
-                            <a href="/pages/analisis.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Análisis</a>
+                            <a href="/pages/analisis.html" class="rounded-md px-3 py-2 text-sm font-medium text-yellow-400 hover:bg-gray-700 hover:text-white">Análisis</a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
     </nav>
     
     <div class="container  flex flex-col items-center mx-auto mt-6 bg-gray-700 p-6 rounded-lg shadow-md w-4/5">
-        <h1 class="text-3xl font-bold text-white mb-4">Buscar un producto para scrapear</h1>
+        <h1 class="text-3xl font-bold text-yellow-400 mb-4">Buscar un producto para scrapear</h1>
 
         <label for="producto" class="text-blue-300 mb-2">Introduce el producto</label>
         <input type="text" placeholder="http://aabbcc.com" id="producto" name="producto" class="w-full p-2 mb-4 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
@@ -45,8 +45,14 @@
 
     
     <div id="card" class="container flex flex-col items-center mx-auto mt-6 bg-gray-800 p-6 rounded-lg shadow-md bg w-3/5">
-        <h3 id="cargando" class="text-xl font-bold text-white mb-4 hidden">Cargando...</h3>
-
+        <div id="cargando" class="hidden">
+            <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+                <style>.spinner_9y7u{animation:spinner_fUkk 2.4s linear infinite;animation-delay:-2.4s}.spinner_DF2s{animation-delay:-1.6s}.spinner_q27e{animation-delay:-.8s}@keyframes spinner_fUkk{8.33%{x:13px;y:1px}25%{x:13px;y:1px}33.3%{x:13px;y:13px}50%{x:13px;y:13px}58.33%{x:1px;y:13px}75%{x:1px;y:13px}83.33%{x:1px;y:1px}}</style>
+                <rect class="spinner_9y7u" x="1" y="1" rx="1" width="10" height="10"/>
+                <rect class="spinner_9y7u spinner_DF2s" x="1" y="1" rx="1" width="10" height="10"/>
+                <rect class="spinner_9y7u spinner_q27e" x="1" y="1" rx="1" width="10" height="10"/>
+            </svg>
+        </div>
         <div class="max-w-sm rounded overflow-hidden">
             <img id="imagen" class="w-full rounded-md hidden" src="" alt="Imagen del producto">
             <div class="px-6 py-4">
