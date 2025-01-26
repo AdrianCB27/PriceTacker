@@ -21,55 +21,45 @@ app.get('/api/:url', async (request, response) => {
         response.status(404).end();
     }
 });
-
 async function scraping(url) {
     try {
         const browser = await puppeteer.launch({ headless: true });
 
-        const page=await browser.newPage();
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+        const page = await browser.newPage();
+        //por si acaso 
+        // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
         await page.goto(url);
         
-        //  console.log(await page.content());
-         const data = await page.evaluate(() => {
-
+        const data = await page.evaluate(() => {
+            const nombreProducto=document.querySelector('#productTitle').innerText.trim();
+            let stock=document.querySelector('.a-size-medium.a-color-success').innerText.trim();
+            
             const precioElement = document.querySelector(".a-offscreen");
-            const srcImagen=document.querySelector("#landingImage").getAttribute('src');
-            const listaDescripcion=document.querySelectorAll(".a-unordered-list");
-            const arrayLista=Array.from(listaDescripcion).map((elemento)=>({
-                desc: elemento.querySelector('.a-spacing-mini')?.innerText || 'Sin Titulo'
+            const srcImagen = document.querySelector("#landingImage").getAttribute('src');
+            const listaDescripcion = document.querySelector("ul.a-unordered-list.a-vertical.a-spacing-mini"); 
+            const arrayLista = Array.from(listaDescripcion.querySelectorAll('li')).map((elemento) => ({
+                desc: elemento.innerText || 'Sin Titulo'
             }));
-            return { precio: precioElement ? precioElement.textContent : null,
-                    src: srcImagen? srcImagen:null,
-                desc:arrayLista};
-         });
-         
 
+            return {
+                precio: precioElement ? precioElement.textContent : null,
+                src: srcImagen ? srcImagen : null,
+                desc: arrayLista,
+                nombre:nombreProducto ?nombreProducto :null,
+                stock: stock!='En stock' ?'Sin stock':stock
+            };
+        });
 
-        
-         
-    
-
-     
-        // const productos = await page.evaluate(() => {
-        //     // Seleccionar todos los productos
-        //     const elementos = document.querySelectorAll('.product_pod');
-      
-        //     return Array.from(elementos).map(producto => ({
-        //       titulo: producto.querySelector('h3 a')?.innerText || 'Sin título',
-        //       precio: producto.querySelector('.price_color')?.innerText || 'Sin precio',
-        //       disponibilidad: producto.querySelector('.instock.availability')?.innerText.trim() || 'Sin información',
-        //     }));
-        //   });
-      
-          await browser.close();
-          console.log(data);
-          return data;
+        await browser.close();
+        console.log(data);
+        return data;
         
     } catch (error) {
-        console.error("😣",error)
+        console.error("😣", error);
     }
 }
+
+
 
 const PORT = 3001
 app.listen(PORT, () => {
