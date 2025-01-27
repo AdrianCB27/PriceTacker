@@ -4,6 +4,10 @@ let datosLocalStorage=getItems()
 
 
 $("#boton").on("click", async function () {
+  if (($('#nombre').text()) !== "") {
+    limpiar();
+  }
+  
   const url = $("#producto").val().trim();
   const encodedUrl = encodeURIComponent(url);
   cargando=true;
@@ -21,16 +25,22 @@ $("#boton").on("click", async function () {
     })
     .then((data) => {
       console.log("Datos recibidos:", data);
-      datosLocalStorage.unshift(data);
-      setItems(datosLocalStorage);
+      if (!existeProducto(datosLocalStorage,data.nombre)) {
+        datosLocalStorage.unshift(data);
+        setItems(datosLocalStorage);
+      }
       pintarTitulo(data.nombre);
       pintarFoto(data.src);
       pintarDescripcion(data.desc);
       pintarPrecioYStock(data.precio,data.stock)
 
     })
-    .catch((error) => console.error("Lol que mal", error));
+    .catch((error) => {
+      pintarTitulo("❌😔Lo siento, ese producto no se puede trackear")
+    });
 });
+
+
 function pintarFoto(src) {
   $('#imagen').attr('src',src);
   $('#imagen').toggleClass('hidden')
@@ -57,3 +67,19 @@ function pintarPrecioYStock(precio,stock) {
   localStorage.setItem('productos',JSON.stringify(arrayProductosActualizado));
   
 }
+function existeProducto(datosLocalStorage, nombreProducto) {
+  for (let producto of datosLocalStorage) {
+    if (producto.nombre === nombreProducto) {
+      return true;
+    }
+  }
+  return false; 
+}
+function limpiar(){
+  $('#imagen').toggleClass('hidden');
+  $('#descripcion').text("");
+  $('#divPrecioStock').toggleClass('hidden');
+  $('#nombre').text("");
+
+}
+

@@ -10,7 +10,7 @@ arrayItems.forEach((producto) => {
     `<tr class="border-b border-gray-200 dark:border-gray-700"></tr>`
   );
   const imagen = `<td class='px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800'>
-        <img src=${producto.src}>
+        <img class="rounded-xl" src=${producto.src}>
         </td>`;
   const nombre = `<td class='px-6 py-4 text-white bg-gray-50 dark:bg-gray-800'>
         ${producto.nombre}
