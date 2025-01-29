@@ -34,3 +34,11 @@ arrayItems.forEach((producto) => {
   fila.append(imagen, nombre, precio,stock);
   tbody.append(fila);
 });
+
+$('#borrarHistorial').on('click',()=>{
+  if (!confirm("¿Seguro que quieres borrar el historial de productos? No se podrá recuperar.")) {
+    return;
+  }
+  localStorage.clear();
+  location.reload();
+})
