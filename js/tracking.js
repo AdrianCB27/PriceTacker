@@ -1,3 +1,7 @@
+/**
+ * 
+ * @returns {Array} array de productos del localstorage
+ */
 export function getItems() {
   const productos = localStorage.getItem("productos");
   return productos ? JSON.parse(productos) : [];
@@ -5,6 +9,10 @@ export function getItems() {
 const arrayItems = getItems();
 const tbody = $("#tbody");
 
+/**
+ * Recorremos el array del localstorage y pintamos los productos en la tabla de forma "Dinámica", estos productos
+ * dependen del contenido del localstorage, es decir, si el localstorage esta vacio, la tabla estará vacia.
+ */
 arrayItems.forEach((producto) => {
   const fila = $(
     `<tr class="border-b border-gray-200 dark:border-gray-700"></tr>`
@@ -14,6 +22,7 @@ arrayItems.forEach((producto) => {
         </td>`;
   const nombre = `<td class='px-6 py-4 text-white bg-gray-50 dark:bg-gray-800'>
         ${producto.nombre}
+        
             </td>`;
   const precio = `<td class='px-6 py-4  text-white bg-gray-50 dark:bg-gray-800'>
                 ${producto.precio}

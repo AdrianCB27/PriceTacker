@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../public/favicon.png" type="image/x-icon">
+    
+</head>
+<body>
+    <nav class="bg-gray-900">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <img class="h-8 w-auto" src="../public/logo.png" alt="Your Company">
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="/index.html" class="rounded-md px-3 py-2 text-sm font-medium text-yellow-400 hover:bg-gray-700 hover:text-white" >Inico</a>
+                            <a href="/pages/dashboard.html" class="rounded-md px-3 py-2 text-sm font-medium text-yellow-400 hover:bg-gray-700 hover:text-white">Dashboard</a>
+                            <a href="/pages/search.html" class="rounded-md px-3 py-2 text-sm font-medium text-yellow-400 hover:bg-gray-700 hover:text-white">Buscar Producto</a>
+                            <a href="/pages/analisis.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-yellow-400" >Análisis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="card" class="container flex flex-col items-center mx-auto mt-6 bg-gray-800 p-6 rounded-lg shadow-md bg w-4/5">
+        <h1 class="text-3xl font-bold text-yellow-400 mb-4">Alternativas</h1>
+
+        
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-s text-gray-700 uppercase dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Imagen
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Precio
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Enlace
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+            
+        </tbody>
+    </table>
+
+</div>
+<br>
+<div id="cargando" class="hidden">
+    <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <style>.spinner_9y7u{animation:spinner_fUkk 2.4s linear infinite;animation-delay:-2.4s}.spinner_DF2s{animation-delay:-1.6s}.spinner_q27e{animation-delay:-.8s}@keyframes spinner_fUkk{8.33%{x:13px;y:1px}25%{x:13px;y:1px}33.3%{x:13px;y:13px}50%{x:13px;y:13px}58.33%{x:1px;y:13px}75%{x:1px;y:13px}83.33%{x:1px;y:1px}}</style>
+        <rect class="spinner_9y7u" x="1" y="1" rx="1" width="10" height="10"/>
+        <rect class="spinner_9y7u spinner_DF2s" x="1" y="1" rx="1" width="10" height="10"/>
+        <rect class="spinner_9y7u spinner_q27e" x="1" y="1" rx="1" width="10" height="10"/>
+    </svg>
+</div>
+    </div>
+    <script type="module" src="../js/alternativas.js"></script>
+
+</body>
+</html>
