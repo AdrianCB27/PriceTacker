@@ -10,7 +10,7 @@ Una aplicación web para hacer seguimiento de productos de Amazon y buscar alter
 
 ## Tecnologías
 
-- **Frontend:** Diseño simple y funcional en HTML, CSS y JavaScript.
+- **Frontend:** Diseño simple y funcional en HTML, TailwindCSS y JavaScript.
 - **Backend:** Node.js con Express para gestionar las solicitudes y la lógica del servidor.
 
 ## Instalación
