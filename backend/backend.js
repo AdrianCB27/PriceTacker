@@ -86,13 +86,12 @@ async function segundoScraping(nombreProducto) {
         const page = await browser.newPage();
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
         await page.goto("https://www.amazon.es/s?k="+nombreProducto);
-        await page.waitForSelector('[role="listitem"]');
+        await page.waitForSelector('[role="listitem"]'); //esperamos a que cargue la lista de productos
         const data = await page.evaluate(() => {
             const listItems = Array.from(document.querySelectorAll('[role="listitem"]')).slice(1, 6);
             return listItems.map(item => {
                 const title = item.querySelector('a h2 span').innerText;
                 const urlImagen = item.querySelector('img').getAttribute('src');
-                
                 let price = (item.querySelector('.a-price-whole') ? item.querySelector('.a-price-whole').innerText : 'No disponible') + (item.querySelector('.a-price-fraction') ? item.querySelector('.a-price-fraction').innerText : '');
                 price = price.replace(/\n/g, ''); // el precio viene con un \n al final asi que lo quitamos
                 price=price.concat('€'); //añadimos el simbolo del euro
@@ -111,8 +110,6 @@ async function segundoScraping(nombreProducto) {
     }
     
 }
-
-
 /**
  * Establece el puerto y se pone a escuchar peticiones
  */

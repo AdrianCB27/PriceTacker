@@ -20,7 +20,6 @@ $("#boton").on("click", async function () {
   const encodedUrl = encodeURIComponent(url);
   cargando=true;
   if (cargando) {
-    console.log("Cargando");
     $('#cargando').toggleClass('hidden');
   }
 

@@ -18,8 +18,12 @@ arrayItems.forEach((producto) => {
     `<tr class="border-b border-gray-200 dark:border-gray-700"></tr>`
   );
   const imagen = `<td class='px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800'>
-        <img class="rounded-xl" src=${producto.src}>
-        </td>`;
+  <img class="rounded-xl mx-auto" style='height:200px; transition: transform 0.3s ease-in-out;' 
+       src=${producto.src} 
+       onmouseover="this.style.transform='scale(1.2)';"
+       onmouseout="this.style.transform='scale(1)';"> 
+</td>`; //con estilos de hover para que tenga un efecto de zoom
+
   const nombre = `<td class='px-6 py-4 text-white bg-gray-50 dark:bg-gray-800'>
         ${producto.nombre}
         
