@@ -33,6 +33,8 @@ Sigue estos pasos para levantar la aplicación localmente:
    npm run dev
    ```
 
+4. Utiliza live server para ejecutar la aplicación
+
 
 ## Uso
 
