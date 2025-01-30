@@ -19,7 +19,7 @@ Sigue estos pasos para levantar la aplicación localmente:
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone [<URL_DEL_REPOSITORIO>](https://github.com/AdrianCB27/PriceTacker.git)
    cd pricetracker
    ```
 
