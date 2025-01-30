@@ -3,7 +3,6 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 const express = require('express');
 const cors = require('cors');
-const { get } = require('jquery');
 const app = express();
 app.use(express.json()); //Para que funcione el post
 app.use(cors()); 
@@ -13,6 +12,17 @@ app.get('/api/:url', async (request, response) => {
     console.log(url);
     if (url) {
         const objetoDatos=await primerScraping(url)
+        response.status(200);
+        response.json(objetoDatos);
+    } else {
+        response.status(404).end();
+    }
+});
+app.get('/api2/:nombreProducto', async (request, response) => {
+    const nombreProducto = request.params.nombreProducto;
+    console.log(nombreProducto);
+    if (nombreProducto) {
+        const objetoDatos=await segundoScraping(nombreProducto)
         response.status(200);
         response.json(objetoDatos);
     } else {
@@ -31,7 +41,6 @@ async function primerScraping(url) {
         const browser = await puppeteer.launch({ headless: true });
 
         const page = await browser.newPage();
-        //por si acaso 
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
         await page.goto(url);
         
@@ -59,7 +68,6 @@ async function primerScraping(url) {
         });
 
         await browser.close();
-        // console.log(data);
         return data;
         
     } catch (error) {
@@ -67,17 +75,7 @@ async function primerScraping(url) {
     }
 }
 
-app.get('/api2/:nombreProducto', async (request, response) => {
-    const nombreProducto = request.params.nombreProducto;
-    console.log(nombreProducto);
-    if (nombreProducto) {
-        const objetoDatos=await segundoScraping(nombreProducto)
-        response.status(200);
-        response.json(objetoDatos);
-    } else {
-        response.status(404).end();
-    }
-});
+
 
 async function segundoScraping(nombreProducto) {
     try {

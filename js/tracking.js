@@ -38,7 +38,9 @@ arrayItems.forEach((producto) => {
   fila.append(imagen, nombre, precio,stock);
   tbody.append(fila);
 });
-
+/**
+ * Borra el historial de productos del localstorage y recarga la página. Siempre pide confirmación antes de borrar.
+ */
 $('#borrarHistorial').on('click',()=>{
   if (!confirm("¿Seguro que quieres borrar el historial de productos? No se podrá recuperar.")) {
     return;
