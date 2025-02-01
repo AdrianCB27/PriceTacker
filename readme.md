@@ -10,7 +10,7 @@ Una aplicación web para hacer seguimiento de productos de Amazon y buscar alter
 
 ## Tecnologías
 
-- **Frontend:** Diseño simple y funcional en HTML, CSS y JavaScript.
+- **Frontend:** Diseño simple y funcional en HTML, TailwindCSS y JavaScript.
 - **Backend:** Node.js con Express para gestionar las solicitudes y la lógica del servidor.
 
 ## Instalación
@@ -19,7 +19,7 @@ Sigue estos pasos para levantar la aplicación localmente:
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/AdrianCB27/PriceTacker.git
    cd pricetracker
    ```
 
@@ -32,6 +32,8 @@ Sigue estos pasos para levantar la aplicación localmente:
    ```bash
    npm run dev
    ```
+
+4. Utiliza live server para ejecutar la aplicación
 
 
 ## Uso
