@@ -1,4 +1,4 @@
-# Pricetracker
+# Pricetracker 💵
 
 Una aplicación web para hacer seguimiento de productos de Amazon y buscar alternativas. Ideal para quienes quieren encontrar las mejores ofertas y mantener un control del historial de búsquedas.
 
